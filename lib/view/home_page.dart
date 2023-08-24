@@ -2,6 +2,7 @@ import 'package:fav_random_demo/controller/home_controller.dart';
 import 'package:fav_random_demo/view/my_fav.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:like_button/like_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -32,7 +33,7 @@ class _DemoPageState extends State<HomePage> {
     "West Bengal",
     "Asaam"
   ];
-
+ bool isLiked = false;
   List<String> tempFavList = [];
   @override
   Widget build(BuildContext context) {
@@ -55,14 +56,43 @@ class _DemoPageState extends State<HomePage> {
             return Card(
               child: ListTile(
                 title: Text(state),
-                trailing: IconButton(
-                  onPressed: () {
-                    homeController.addFav(state);
-                  },
-                  icon: homeController.isExist(state)
-                      ? Icon(Icons.favorite)
-                      : Icon(Icons.favorite_border),
-                ),
+                trailing:  LikeButton(
+                        isLiked: isLiked,
+                        size: 30,
+                        animationDuration: Duration(seconds: 2),
+                        likeCount: 1,
+                        countPostion: CountPostion.bottom,
+                      
+                        likeBuilder: (isLiked) {
+                          final color = isLiked?Colors.red: Colors.black;
+                          return Icon(isLiked?Icons.favorite: Icons.favorite_border,color: color,);
+                        },
+                        countBuilder: (likeCount, isLiked, text) {
+                          final color = isLiked?Colors.red: Colors.black;
+                          return Text(
+                            text,
+                            style: TextStyle(
+                              color: color,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold
+                            ),
+                          );
+                        },
+                        onTap: (isLiked) async{
+                          //  homeController.addFav(state);
+                           print(!isLiked);
+                
+                          return !isLiked;
+                        },
+                      )
+                //  IconButton(
+                //   onPressed: () {
+                //     homeController.addFav(state);
+                //   },
+                //   icon: homeController.isExist(state)
+                //       ? Icon(Icons.favorite)
+                //       : Icon(Icons.favorite_border),
+                // ),
               ),
             );
           },

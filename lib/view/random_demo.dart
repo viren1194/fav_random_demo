@@ -21,7 +21,9 @@ class _RandomDemoState extends State<RandomDemo> {
         ElevatedButton(onPressed: () {
         
            setState(() {
-                name = nameList[Random().nextInt(nameList.length)];
+                // name = nameList[Random().nextInt(nameList.length)];
+                 nameList.shuffle(); 
+                name = nameList[0];
               });
                 print(name);
      
