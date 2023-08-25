@@ -18,4 +18,8 @@ class HomeController extends GetxController implements GetxService {
     final isExist = _stateList.contains(state);
     return isExist;
   }
+
+  int getLikeCount(String state) {
+    return _stateList.where((favState) => favState == state).length;
+  }
 }

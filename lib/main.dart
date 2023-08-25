@@ -1,6 +1,7 @@
-import 'package:fav_random_demo/view/demo_page.dart';
+
 import 'package:fav_random_demo/view/home_page.dart';
-import 'package:fav_random_demo/view/random_demo.dart';
+
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,9 +15,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
-      // home: HomePage(),
+      home: HomePage(),
       // home: RandomDemo(),
-      home: DemoPage(),
+      // home: DemoPage(),
+    
     );
   }
 }

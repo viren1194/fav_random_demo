@@ -33,7 +33,7 @@ class _DemoPageState extends State<HomePage> {
     "West Bengal",
     "Asaam"
   ];
- bool isLiked = false;
+  bool isLiked = false;
   List<String> tempFavList = [];
   @override
   Widget build(BuildContext context) {
@@ -53,47 +53,43 @@ class _DemoPageState extends State<HomePage> {
           itemCount: stateList.length,
           itemBuilder: (context, index) {
             final state = stateList[index];
+            bool isLiked =
+                homeController.isExist(state); // Check if state is liked
+            int likeCount = homeController
+                .getLikeCount(state); // Get like count for the state
             return Card(
               child: ListTile(
-                title: Text(state),
-                trailing:  LikeButton(
-                        isLiked: isLiked,
-                        size: 30,
-                        animationDuration: Duration(seconds: 2),
-                        likeCount: 1,
-                        countPostion: CountPostion.bottom,
-                      
-                        likeBuilder: (isLiked) {
-                          final color = isLiked?Colors.red: Colors.black;
-                          return Icon(isLiked?Icons.favorite: Icons.favorite_border,color: color,);
-                        },
-                        countBuilder: (likeCount, isLiked, text) {
-                          final color = isLiked?Colors.red: Colors.black;
-                          return Text(
-                            text,
-                            style: TextStyle(
-                              color: color,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold
-                            ),
-                          );
-                        },
-                        onTap: (isLiked) async{
-                          //  homeController.addFav(state);
-                           print(!isLiked);
-                
-                          return !isLiked;
-                        },
-                      )
-                //  IconButton(
-                //   onPressed: () {
-                //     homeController.addFav(state);
-                //   },
-                //   icon: homeController.isExist(state)
-                //       ? Icon(Icons.favorite)
-                //       : Icon(Icons.favorite_border),
-                // ),
-              ),
+                  title: Text(state),
+                  trailing: LikeButton(
+                    isLiked: isLiked,
+                    size: 30,
+                    animationDuration: Duration(seconds: 2),
+                    likeCount: likeCount,
+                    countPostion: CountPostion.bottom,
+                    likeBuilder: (isLiked) {
+                      final color = isLiked ? Colors.red : Colors.black;
+                      return Icon(
+                        isLiked ? Icons.favorite : Icons.favorite_border,
+                        color: color,
+                      );
+                    },
+                    countBuilder: (likeCount, isLiked, text) {
+                      final color = isLiked ? Colors.red : Colors.black;
+                      return Text(
+                        text,
+                        style: TextStyle(
+                            color: color,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold),
+                      );
+                    },
+                    onTap: (isLiked) async {
+                      homeController.addFav(state);
+                      print(!isLiked);
+
+                      return !isLiked;
+                    },
+                  )),
             );
           },
         );
