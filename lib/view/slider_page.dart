@@ -6,6 +6,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:gradient_borders/input_borders/gradient_outline_input_border.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SliderPage extends StatefulWidget {
   const SliderPage({super.key});
@@ -24,6 +25,9 @@ class _SliderPageState extends State<SliderPage> {
   ];
   PageController pageController = PageController(initialPage: 0);
   TextEditingController textController = TextEditingController();
+ 
+
+  bool _isButtonPressed = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,22 +80,22 @@ class _SliderPageState extends State<SliderPage> {
                 CarouselSlider(
                   items: imageList
                       .map((e) => Container(
-                       decoration: BoxDecoration(
-                      border: GradientBoxBorder(
-                        gradient:
-                            LinearGradient(colors: [Colors.blue, Colors.red]),
-                        width: 2,
-                      ),
-                          borderRadius: BorderRadius.circular(20),
-                      ),
-                        child: ClipRRect(
-                           borderRadius: BorderRadius.circular(20),
+                            decoration: BoxDecoration(
+                              border: GradientBoxBorder(
+                                gradient: LinearGradient(
+                                    colors: [Colors.blue, Colors.red]),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
                               child: Image.network(
                                 e,
                                 fit: BoxFit.cover,
                               ),
                             ),
-                      ))
+                          ))
                       .toList(),
                   options: CarouselOptions(
                     height: 350,
@@ -142,6 +146,10 @@ class _SliderPageState extends State<SliderPage> {
                 SizedBox(
                   height: 10,
                 ),
+
+
+
+              
               ],
             ),
           ),

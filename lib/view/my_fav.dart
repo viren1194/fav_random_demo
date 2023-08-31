@@ -10,7 +10,7 @@ class MyFav extends StatefulWidget {
 }
 
 class _MyFavState extends State<MyFav> {
-  HomeController homeController = Get.put(HomeController());
+  HomeController homeController = Get.find();
 
   @override
   Widget build(BuildContext context) {

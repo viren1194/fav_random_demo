@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _DemoPageState extends State<HomePage> {
-  HomeController homeController = Get.put(HomeController());
+  HomeController homeController = Get.find();
   List<String> stateList = [
     'Gujarat',
     "Maha",
