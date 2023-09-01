@@ -1,5 +1,7 @@
 import 'package:fav_random_demo/view/dashboard.dart';
 import 'package:fav_random_demo/view/home_page.dart';
+import 'package:fav_random_demo/view/insta_like/insta_like.dart';
+import 'package:fav_random_demo/view/insta_like/show_hint.dart';
 import 'package:fav_random_demo/view/login/splash_screen.dart';
 import 'package:fav_random_demo/view/shared_pref/sharedpref_ex.dart';
 import 'package:fav_random_demo/view/slider_page.dart';
@@ -28,7 +30,9 @@ class MyApp extends StatelessWidget {
       // home: SharedPrefEx(),
       // home: SharedPrefList(),
       // home: SplashScreen(),
-      home: Dashboard(),
+      // home: Dashboard(),
+      home: InstaLike(),
+      // home: ShowHint(),
     );
   }
 }
